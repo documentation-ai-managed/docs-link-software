@@ -1,0 +1,118 @@
+---
+title: Core Features of Link Software
+description: Explore the essential tools and capabilities for effective documentation management and collaboration.
+---
+
+## Overview
+
+Link Software provides powerful tools to manage your documentation projects efficiently. You organize content into structured spaces, collaborate with teams, track changes over time, and find information quickly.
+
+<Columns cols={2}>
+  <Card title="Organize Documents" icon="folder" href="#document-organization">
+    Structure your docs with folders, pages, and templates.
+  </Card>
+  <Card title="Collaborate Seamlessly" icon="users" href="#collaboration">
+    Share, comment, and co-edit in real time.
+  </Card>
+  <Card title="Track Versions" icon="git-branch" href="#version-history">
+    Maintain history and revert changes easily.
+  </Card>
+  <Card title="Advanced Search" icon="search" href="#advanced-search">
+    Find content with filters and full-text search.
+  </Card>
+</Columns>
+
+## Document Organization and Structuring
+
+You create hierarchical structures to keep your documentation intuitive and scalable. Start with spaces for projects, add folders for categories, and nest pages for details.
+
+<Steps>
+  <Step title="Create a Space" icon="plus">
+    Navigate to your dashboard and click `New Space`. Enter a name like `Project Alpha Docs`.
+  </Step>
+  <Step title="Add Folders" icon="folder-plus">
+    Inside the space, create folders such as `Getting Started` and `API Reference`.
+  </Step>
+  <Step title="Build Pages" icon="file-text">
+    Add pages with rich text, embeds, and code blocks. Use templates for consistency.
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  Use templates to standardize page layouts across your team.
+</Callout>
+
+## Collaboration and Sharing Options
+
+Invite team members and external reviewers to collaborate. You control permissions at space, folder, or page levels.
+
+<Tabs>
+  <Tab title="Team Access" icon="users">
+    Assign roles like Editor or Viewer.
+
+    ```
+    ```yaml
+    spaceId: proj-alpha-123
+    permissions:
+      - user: team@company.com
+        role: editor
+      - group: devs
+        role: admin
+    ```
+    ```
+  </Tab>
+  <Tab title="Public Sharing" icon="share-2">
+    Generate shareable links with view-only access.
+
+    <Image
+      src="https://example.com/share-link.png"
+      alt="Share link generation interface"
+      width="600"
+      height="400"
+    />
+  </Tab>
+  <Tab title="Embed Pages" icon="code">
+    Embed docs in your apps or sites.
+
+    ```html
+    <iframe src="https://docs.example.com/embed/proj-alpha/page-456" width="100%" height="600"></iframe>
+    ```
+  </Tab>
+</Tabs>
+
+## Version History and Tracking
+
+Every edit creates a version snapshot. You compare changes, restore previous versions, and track who made updates.
+
+<CodeGroup tabs="Web,CLI">
+  ```javascript
+  // Fetch version history via API
+  const history = await fetch('https://api.example.com/spaces/proj-alpha/pages/page-456/versions');
+  const versions = await history.json();
+  console.log(versions); // Array of {id, author, timestamp, changes}
+  ```
+  ```bash
+  # CLI command to revert
+  link-software versions list --space proj-alpha --page page-456
+  link-software versions revert --version v3.2.1
+  ```
+</CodeGroup>
+
+## Advanced Search Functionalities
+
+Search across all your spaces with filters for content type, author, or date. Use Boolean operators for precision.
+
+<Expandable title="Search Examples" default-open="true">
+  - Basic: `API authentication`
+  - Filtered: `from:john@company.com setup`
+  - Advanced: `"error handling" AND (React OR Vue)`
+
+  ```javascript
+  // API search query
+  const results = await fetch('https://api.example.com/search?q=API+auth&filter=pages&space=proj-alpha');
+  ```
+</Expandable>
+
+<Callout kind="info">
+  Pro tip: Pin frequent searches to your dashboard for quick access.
+</Callout>

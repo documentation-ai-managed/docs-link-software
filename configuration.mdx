@@ -1,0 +1,174 @@
+---
+title: Configuring Your Documentation Spaces
+description: Customize your spaces, permissions, and settings to fit your project's needs.
+---
+
+## Overview
+
+Configure your Link Software documentation spaces to match your team's workflow. Adjust permissions for collaborators, apply custom themes, set notifications for updates, and import content from external sources. Use the dashboard at `https://dashboard.example.com/spaces/{spaceId}/settings` to make these changes.
+
+<Callout kind="tip">
+  Save your changes after each configuration section to apply them immediately.
+</Callout>
+
+<Columns cols={3}>
+  <Card title="Permissions" icon="shield" href="#managing-space-permissions">
+    Control who can view, edit, and administer spaces.
+  </Card>
+  <Card title="Themes & Layouts" icon="palette" href="#customizing-themes-and-layouts">
+    Personalize appearance with colors and structures.
+  </Card>
+  <Card title="Notifications" icon="bell" href="#setting-up-notifications">
+    Stay informed about edits and mentions.
+  </Card>
+</Columns>
+
+## Managing Space Permissions
+
+Set granular permissions for your documentation spaces. Assign roles like Viewer, Editor, or Admin via the permissions panel.
+
+<ParamField path="role" param-type="string" required="true">
+  Role assigned to the user: `viewer`, `editor`, or `admin`.
+</ParamField>
+
+<ParamField path="permissions.read" param-type="boolean" required="false" default="true">
+  Grants read access to all documents.
+</ParamField>
+
+<ParamField path="permissions.write" param-type="boolean" required="false">
+  Allows creating and editing documents.
+</ParamField>
+
+Use the API to update permissions programmatically.
+
+<CodeGroup tabs="JavaScript,cURL">
+  ```javascript
+  const response = await fetch(`https://api.example.com/v1/spaces/{spaceId}/permissions`, {
+    method: 'PATCH',
+    headers: { 'Authorization': `Bearer ${YOUR_API_KEY}` },
+    body: JSON.stringify({
+      userId: 'user-123',
+      role: 'editor',
+      permissions: { read: true, write: true }
+    })
+  });
+  ```
+  ```bash
+  curl -X PATCH https://api.example.com/v1/spaces/{spaceId}/permissions \\
+    -H "Authorization: Bearer YOUR_API_KEY" \\
+    -H "Content-Type: application/json" \\
+    -d '{
+      "userId": "user-123",
+      "role": "editor",
+      "permissions": { "read": true, "write": true }
+    }'
+  ```
+</CodeGroup>
+
+## Customizing Themes and Layouts
+
+Tailor the visual style of your spaces with custom themes and layouts. Apply changes in the `https://dashboard.example.com/spaces/{spaceId}/appearance` section.
+
+<Tabs>
+  <Tab title="Theme" icon="palette">
+    Update colors and fonts.
+
+    ```json
+    {
+      "primaryColor": "#3B82F6",
+      "fontFamily": "Inter, sans-serif",
+      "darkMode": true
+    }
+    ```
+
+    <ParamField body="primaryColor" param-type="string">
+      Your brand's primary color in hex format.
+    </ParamField>
+  </Tab>
+  <Tab title="Layout" icon="layout">
+    Choose sidebar or top navigation.
+
+    ```json
+    {
+      "layout": "sidebar",
+      "sidebarWidth": "280px",
+      "showBreadcrumbs": true
+    }
+    ```
+
+    <Callout kind="info">
+      Layout changes apply site-wide after refresh.
+    </Callout>
+  </Tab>
+</Tabs>
+
+## Setting Up Notifications
+
+Enable notifications to track changes in your spaces. Configure them per space in the notifications tab.
+
+<Steps>
+  <Step title="Access Settings" icon="settings">
+    Navigate to `https://dashboard.example.com/spaces/{spaceId}/notifications`.
+  </Step>
+  <Step title="Select Events" icon="bell">
+    Choose events like page edits or comments.
+  </Step>
+  <Step title="Choose Channels" icon="send">
+    Select email, Slack, or webhook.
+  </Step>
+  <Step title="Test & Save" icon="check-circle">
+    Send a test notification and save.
+  </Step>
+</Steps>
+
+For webhooks, use this endpoint format:
+
+````jsx
+<CodeGroup>
+  ```javascript
+  // Webhook payload example
+  const payload = {
+    event: 'page.updated',
+    spaceId: 'space-456',
+    pageId: 'doc-789',
+    user: 'user-123'
+  };
+  ```
+</CodeGroup>
+````
+
+## Importing External Content
+
+Bring in content from GitHub, Notion, or Markdown files. This feature syncs updates automatically.
+
+<Expandable title="Supported Sources" default-open="true">
+  - GitHub repositories
+  - Notion pages
+  - Local Markdown folders
+</Expandable>
+
+<Expandable title="Import Steps">
+  1. Go to `https://dashboard.example.com/spaces/{spaceId}/import`.
+  2. Paste the source URL, e.g., `https://github.com/org/repo/tree/main/docs`.
+  3. Map directories to spaces.
+  4. Enable auto-sync.
+
+  ```bash
+  # Example GitHub import via CLI
+  link-software import --space space-456 --source https://github.com/org/repo --branch main
+  ```
+</Expandable>
+
+## Troubleshooting Common Issues
+
+<ExpandableGroup>
+  <Expandable title="Permissions Not Applying">
+    Clear your browser cache and verify the API key format: `Bearer YOUR_API_KEY`.
+  </Expandable>
+  <Expandable title="Theme Not Loading" default-open="true">
+    Check that hex colors like `#3B82F6` are valid and reload the dashboard.
+  </Expandable>
+  <Expandable title="Notifications Silent">
+    Test the webhook URL `https://your-webhook-url.com/webhook` separately.
+  </Expandable>
+</ExpandableGroup>

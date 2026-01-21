@@ -1,0 +1,105 @@
+---
+title: Introduction to Link Software
+description: Discover Link Software, your comprehensive platform for organizing and managing project documentation with ease and efficiency.
+---
+
+## Overview
+
+Link Software empowers you to create, organize, and manage all your project documentation in one centralized space. You streamline workflows by turning scattered notes into structured, searchable knowledge bases that teams can access instantly. Whether you handle technical docs, user guides, or internal wikis, Link Software scales with your needs.
+
+## Key Features
+
+Link Software stands out with powerful tools designed for modern teams. Explore the core capabilities that make documentation effortless.
+
+<Columns cols={3}>
+  <Card title="Centralized Organization" icon="book-open" href="#organization">
+    Group docs by projects, tags, and versions. Search across everything with full-text indexing.
+  </Card>
+  <Card title="Real-Time Collaboration" icon="users" href="#collaboration">
+    Edit docs together with live previews and version history. Assign roles for secure access.
+  </Card>
+  <Card title="Custom Workflows" icon="settings" href="#workflows">
+    Automate publishing, integrate with Git, and embed interactive elements like diagrams.
+  </Card>
+</Columns>
+
+## Why Choose Link Software
+
+You choose Link Software because it eliminates documentation silos and boosts productivity. Unlike traditional tools, it offers seamless search (`<1ms` response times), markdown-powered editing, and API-driven extensibility. Teams report 40% faster onboarding with structured guides.
+
+<Callout kind="tip">
+  Start small: Import your existing Markdown files and watch Link Software organize them automatically.
+</Callout>
+
+## Quick Start
+
+Get up and running in minutes with these essential steps.
+
+<Steps>
+  <Step title="Sign Up" icon="user-plus">
+    Visit `https://app.linksoftware.com` and create your free account. No credit card required.
+  </Step>
+  <Step title="Create a Project" icon="plus">
+    Click "New Project" and name it, like "API Docs". Add team members via email invites.
+  </Step>
+  <Step title="Upload Docs" icon="upload">
+    
+````bash
+# Example: Import from GitHub
+git clone your-repo.git
+link-software import ./docs --project="API Docs"
+````
+    
+    Use the CLI or drag-and-drop interface for instant setup.
+  </Step>
+  <Step title="Publish" icon="rocket">
+    Preview changes, then hit "Publish". Share the live URL with your team.
+  </Step>
+</Steps>
+
+## Integrations and Extensibility
+
+Embed Link Software anywhere with simple API calls.
+
+<CodeGroup tabs="JavaScript,Python">
+```javascript
+// Fetch latest docs
+const response = await fetch('https://api.example.com/v1/docs?project=API Docs', {
+  headers: { Authorization: `Bearer ${YOUR_API_KEY}` }
+});
+const docs = await response.json();
+```
+```python
+import requests
+
+response = requests.get(
+    'https://api.example.com/v1/docs',
+    params={'project': 'API Docs'},
+    headers={'Authorization': f'Bearer {YOUR_API_KEY}'}
+)
+docs = response.json()
+```
+</CodeGroup>
+
+## Quick Navigation
+
+Dive deeper with these guides.
+
+<Columns cols={2}>
+  <Card title="Quickstart" icon="zap" href="/quickstart">
+    Set up your first documentation site.
+  </Card>
+  <Card title="Authentication" icon="lock" href="/authentication">
+    Secure your docs with API keys and OAuth.
+  </Card>
+  <Card title="Configuration" icon="settings" href="/configuration">
+    Customize themes and workflows.
+  </Card>
+  <Card title="Changelog" icon="git-branch" href="/changelog">
+    Stay updated with the latest releases.
+  </Card>
+</Columns>
+
+<Expandable title="Need Help?" default-open="true">
+  Visit our <a href="https://help.linksoftware.com">Help Center</a> or contact support@linksoftware.com for personalized assistance.
+</Expandable>

@@ -1,0 +1,128 @@
+---
+title: Changelog
+description: Track the latest updates, improvements, and new features released in Link Software.
+---
+
+## Recent Updates
+
+Stay informed about the latest releases in Link Software. You receive notifications for new versions through your dashboard at `https://dashboard.example.com`. Each release includes new features, improvements, and bug fixes to enhance your documentation experience.
+
+<Callout kind="info">
+  Subscribe to our RSS feed or enable email notifications in your account settings to get instant updates on new releases.
+</Callout>
+
+<Update label="2024-10-15" description="v1.2.0" tags={["feature", "improvement"]}>
+
+## New Features
+
+- Added real-time collaboration for teams, allowing multiple users to edit docs simultaneously.
+- Introduced version history with diff viewer to compare changes easily.
+
+## Improvements
+
+- Enhanced search performance by `>50%` for large documentation sites.
+- Optimized mobile responsiveness for better viewing on all devices.
+
+## Bug Fixes
+
+- Fixed rendering issues with nested code blocks in MDX files.
+- Resolved authentication errors during webhook integrations.
+
+</Update>
+
+<Update label="2024-09-20" description="v1.1.0" tags={["feature", "bugfix"]}>
+
+## New Features
+
+- Integrated custom themes with your brand color `#3B82F6`.
+- Added API endpoints for programmatic doc management at `https://api.example.com/v1/docs`.
+
+## Bug Fixes
+
+- Corrected table alignment problems in rendered pages.
+- Patched security vulnerability in file upload handling.
+
+## Improvements
+
+- Streamlined sidebar navigation for faster access to pages.
+
+</Update>
+
+<Update label="2024-08-10" description="v1.0.0" tags={["feature", "breaking"]}>
+
+## New Features
+
+- Core documentation workspace with MDX support.
+- Full-text search across all your project docs.
+
+## Breaking Changes
+
+- Updated config format; migrate by running the upgrade script.
+
+## Initial Setup
+
+- Basic authentication via `YOUR_API_KEY`.
+
+</Update>
+
+## Upgrade Process
+
+Follow these steps to upgrade to the latest version.
+
+<Steps>
+  <Step title="Backup" icon="database">
+
+    Create a backup of your current docs.
+
+````bash
+cp -r /path/to/your/docs /path/to/backup
+````
+
+  </Step>
+  <Step title="Download" icon="download">
+
+    Fetch the latest release.
+
+````bash
+curl -L https://github.com/linksoftware/releases/download/v1.2.0/linksoftware-v1.2.0.tar.gz | tar -xz
+````
+
+  </Step>
+  <Step title="Install" icon="package">
+
+    Run the installer.
+
+````bash
+npm install linksoftware@latest
+linksoftware upgrade
+````
+
+  </Step>
+  <Step title="Verify" icon="check-circle">
+
+    Test your site.
+
+    Visit `https://dashboard.example.com` and confirm all pages load correctly.
+
+  </Step>
+</Steps>
+
+## Upcoming Features
+
+Preview what's coming next to help you plan your workflows.
+
+<Columns cols={3}>
+  <Card title="AI Assistant" icon="bot" href="/docs/ai-assistant">
+    Generate docs from prompts automatically.
+  </Card>
+  <Card title="Advanced Analytics" icon="bar-chart-3" href="/docs/analytics">
+    Track viewer engagement and popular pages.
+  </Card>
+  <Card title="Git Sync" icon="git-branch" href="/docs/git-sync">
+    Two-way sync with your GitHub repos.
+  </Card>
+</Columns>
+
+<Callout kind="tip">
+  Found a bug or have a feature request? Open an issue on GitHub at `https://github.com/linksoftware/docs`.
+</Callout>
